@@ -1,8 +1,10 @@
 package com.example.reputationjobbe.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 @Entity
 @Table(name = "orders")
@@ -15,20 +17,19 @@ public class Orders {
     private String orderCode;
 
     @Column(columnDefinition = "date", nullable = false)
-    private String datePurchase;
+    private Date datePurchase;
 
     private double totalPay;
 
     private boolean isPaid;
 
-    private Long employeeId;
 
     @ManyToOne
     @JoinColumn(name = "candidate_id",referencedColumnName = "id")
     private Candidate candidate;
 
     @OneToMany(mappedBy = "order")
-    @JsonIgnore
+    @JsonBackReference
     private Set<Cart> cartSet;
 
 
@@ -48,11 +49,11 @@ public class Orders {
         this.orderCode = orderCode;
     }
 
-    public String getDatePurchase() {
+    public Date getDatePurchase() {
         return datePurchase;
     }
 
-    public void setDatePurchase(String datePurchase) {
+    public void setDatePurchase(Date datePurchase) {
         this.datePurchase = datePurchase;
     }
 
@@ -70,14 +71,6 @@ public class Orders {
 
     public void setPaid(boolean paid) {
         isPaid = paid;
-    }
-
-    public Long getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
     }
 
     public Candidate getCandidate() {

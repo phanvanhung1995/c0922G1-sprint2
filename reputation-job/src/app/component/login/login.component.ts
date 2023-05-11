@@ -74,8 +74,7 @@ export class LoginComponent implements OnInit {
           icon: 'error',
           showConfirmButton: false,
           timer: 2000,
-          background: '#fff0e6',
-          iconHtml: '<i class="fas fa-check"></i>',
+          background: '#fff0e6'
         });
       }
     );

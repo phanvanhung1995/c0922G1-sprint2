@@ -1,5 +1,6 @@
 package com.example.reputationjobbe.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -32,11 +33,11 @@ public class Candidate {
     private String email;
 
     @OneToOne(mappedBy = "candidate")
-    @JsonIgnore
+    @JsonBackReference
     private Account account;
 
     @OneToMany(mappedBy = "candidate")
-    @JsonIgnore
+    @JsonBackReference
     private Set<Orders> orderSet;
 
     public Long getId() {

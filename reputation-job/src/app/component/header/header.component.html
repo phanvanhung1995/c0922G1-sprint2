@@ -13,17 +13,29 @@
         <li class="nav-item active"><a href="#" class="nav-link font-italic"> Contact</a></li>
       </ul>
     </div>
-    <div  [hidden]="!isLoggedIn">
-      <a href="" (click)="logOut()">
-        <button type="button" class="btn btn-primary">logout</button>
-        </a>
+
+    <div class="dropdown"  [hidden]="!isLoggedIn">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        {{username}}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+               data-bs-target="#detail1" routerLink="/detailCandidate/{{id}}">update account</a></li>
+        <li><a  class="dropdown-item" href="#">Change password</a></li>
+        <li><a routerLink="/history/{{id}}" class="dropdown-item" href="#">purchase history</a></li>
+        <li>
+          <a href="" class="dropdown-item" (click)="logOut()">Logout</a>
+        </li>
+      </ul>
     </div>
+
     <div [hidden]="isLoggedIn">
       <a href="#" class="btn btn-outline-primary">Register</a>
       <a style="margin-left: 1rem" routerLink="/login" class="btn btn-outline-primary">Login</a>
     </div>
   </div>
 </nav>
+
 
 
 

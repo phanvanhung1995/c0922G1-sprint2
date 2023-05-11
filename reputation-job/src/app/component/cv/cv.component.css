@@ -141,7 +141,7 @@ figcaption {
 
 /* .img-bg */
 .img-bg {
-  background: hsla(var(--hue), 25%, 10%, .5);
+  background: hsla(var(--hue), 15%, 5%, .3);
 }
 
 .card-front .img-bg {
@@ -176,56 +176,52 @@ figcaption {
   border-right-color: var(--primary);
 }
 
-/* ul */
-ul {
-  padding-top: 50%;
-  margin: 0 auto;
-  width: 70%;
-  height: 100%;
+/*ul */
+/*ul {*/
+/*  padding-top: 50%;*/
+/*  margin: 0 auto;*/
+/*  width: 70%;*/
+/*  height: 100%;*/
 
-  list-style: none;
-  color: var(--white-1);
+/*  list-style: none;*/
+/*  color: var(--white-1);*/
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  !*flex-direction: column;*!*/
+/*}*/
 
 /* li */
-li {
-  width: 100%;
-  margin-top: 12px;
-  padding-bottom: 12px;
+/*  li {*/
+/*    width: 100%;*/
+/*    margin-top: 12px;*/
+/*    padding-bottom: 12px;*/
+/*    font-size: 14px;*/
+/*    text-align: center;*/
+/*    position: relative;*/
+/*  }*/
 
-  font-size: 14px;
-  text-align: center;
+/*li:not(:last-child)::after {*/
+/*  content: "";*/
 
-  position: relative;
-}
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
 
-li:not(:last-child)::after {
-  content: "";
+/*  width: 100%;*/
+/*  height: 1px;*/
 
-  position: absolute;
-  bottom: 0;
-  left: 0;
+/*  background: currentColor;*/
+/*  opacity: .2;*/
+/*}*/
 
-  width: 100%;
-  height: 1px;
-
-  background: currentColor;
-  opacity: .2;
-}
-
-/* button */
+/*button*/
 button {
   font-family: inherit;
   font-weight: bold;
   color: var(--white-1);
-
   letter-spacing: 2px;
-
   padding: 9px 20px;
   border: 1px solid var(--grey);
   margin: 5px;
@@ -347,9 +343,9 @@ button:active {
 }
 
 /* states */
-button:hover+.design-container,
-button:active+.design-container,
-button:focus+.design-container {
+button:hover + .design-container,
+button:active + .design-container,
+button:focus + .design-container {
   --tr: 20;
   --op: .7;
 }
@@ -363,3 +359,34 @@ button:focus+.design-container {
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+.div-paginable {
+  margin-top: 30px;
+
+}
+
+.page-link {
+  padding: 15px;
+}
+
+.cart-icon {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.cart-icon .cart-count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 50%;
+  width: 100%;
+}
+
+.cart-icon i {
+  font-size: 24px;
+}

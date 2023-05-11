@@ -1,5 +1,6 @@
 package com.example.reputationjobbe.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -22,8 +23,20 @@ public class CV {
     @JoinColumn(name = "position_id" ,referencedColumnName = "id")
     private Position position;
     @OneToMany(mappedBy = "cv")
-    @JsonIgnore
+    @JsonBackReference
     private Set<Cart> cartSet;
+
+    @OneToMany(mappedBy = "cv")
+    @JsonBackReference
+    private Set<ImgCv> imgCvSet;
+
+    public Set<ImgCv> getImgCvSet() {
+        return imgCvSet;
+    }
+
+    public void setImgCvSet(Set<ImgCv> imgCvSet) {
+        this.imgCvSet = imgCvSet;
+    }
 
     public Long getId() {
         return id;

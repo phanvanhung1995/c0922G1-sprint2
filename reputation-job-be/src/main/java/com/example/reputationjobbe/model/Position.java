@@ -1,5 +1,7 @@
 package com.example.reputationjobbe.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,6 +13,7 @@ public class Position {
     @Column(nullable = false, columnDefinition = "varchar(50)")
     private String name;
     @OneToMany(mappedBy = "position")
+    @JsonBackReference
     private Set<CV> cvSet;
 
     public Long getId() {

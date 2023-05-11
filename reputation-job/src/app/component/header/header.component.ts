@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenStorageService} from "../../service/tokenStorage.service";
 import {ShareService} from "../../service/share.service";
+import {AccountService} from "../../service/account.service";
 
 @Component({
   selector: 'app-header',
@@ -11,16 +12,19 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: any;
   role?: string;
   username?: string;
+   id?: number;
 
   constructor(private tokenStorageService: TokenStorageService,
               private shareService: ShareService,
+              private accountService:AccountService,
             ) {
-    this.shareService.getClickEvent().subscribe(() => {
-      this.loadHeader();
-    });
+    this.loadHeader();
   }
 
   ngOnInit(): void {
+    this.shareService.getClickEvent().subscribe(() => {
+      this.loadHeader();
+    });
   }
 
   logOut() {
@@ -32,22 +36,12 @@ export class HeaderComponent implements OnInit {
     if (this.tokenStorageService.getToken()) {
       this.role = this.tokenStorageService.getUser().roles[0];
       this.username = this.tokenStorageService.getUser().username;
+      this.id = this.tokenStorageService.getUser().id;
+      console.log(this.id)
+
     }
     this.isLoggedIn = this.username != null;
-    // this.findNameUser();
   }
 
-  // findNameUser(): void {
-  //   if (this.role === 'ROLE_ADMIN' || this.role === 'ROLE_TEACHER') {
-  //     this.teacherService.findTeacherByEmail(this.username).subscribe(next => {
-  //       this.name = next.teacherName;
-  //       this.img = next.teacherImg;
-  //     });
-  //   } else {
-  //     this.studentService.findStudentByEmail(this.username).subscribe(next => {
-  //       this.name = next.studentName;
-  //       this.img = next.studentImg;
-  //     });
-  //   }
-  // }
+
 }

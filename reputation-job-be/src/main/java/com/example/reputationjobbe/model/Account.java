@@ -1,5 +1,6 @@
 package com.example.reputationjobbe.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ public class Account {
     @Column(columnDefinition = "varchar(255)", unique = true, nullable = false)
     private String username;
     @OneToMany(mappedBy = "account")
-    @JsonIgnore
+    @JsonBackReference
     private Set<AccountRole> accountRoleSet;
 
     @OneToOne

@@ -3,13 +3,15 @@ package com.example.reputationjobbe.login;
 import java.util.List;
 
 public class JwtResponse {
+    private Long id;
     private String token;
     private String type = "Bearer";
     private String username;
     private List<String> roles;
 
-    public JwtResponse(String accessToken, String username, List<String> roles) {
+    public JwtResponse(String accessToken,Long id, String username, List<String> roles) {
         this.token = accessToken;
+        this.id = id;
         this.username = username;
         this.roles = roles;
     }
@@ -27,6 +29,14 @@ public class JwtResponse {
 
     public String getTokenType() {
         return type;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setTokenType(String tokenType) {

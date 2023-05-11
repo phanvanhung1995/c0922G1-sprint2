@@ -9,9 +9,8 @@ public class ReputationJobBeApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ReputationJobBeApplication.class, args);
-        String a = "123456";
+        String a = "111111";
         String b = BCrypt.hashpw(a, BCrypt.gensalt(12));
         System.out.println(b);
     }
-
 }

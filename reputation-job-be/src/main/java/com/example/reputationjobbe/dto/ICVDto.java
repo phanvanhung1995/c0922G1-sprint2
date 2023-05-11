@@ -8,10 +8,10 @@ public interface ICVDto {
     String getDescription();
 
     String getFilePath();
+    String getLink();
 
     String getPrice();
 
     String getPosition();
-
 
 }

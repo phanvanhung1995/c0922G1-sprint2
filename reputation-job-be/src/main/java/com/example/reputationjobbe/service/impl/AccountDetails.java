@@ -13,14 +13,17 @@ import java.util.stream.Collectors;
 
 public class AccountDetails implements UserDetails {
     private static final long serialVersionUID = 1L;
+    private Long accountId ;
+
     private String username;
 
     @JsonIgnore
     private String password;
 
     List<GrantedAuthority> authorities = null;
-    public AccountDetails(String username, String password,
+    public AccountDetails(Long id,String username, String password,
                           List<GrantedAuthority> authorities) {
+        this.accountId = id;
         this.username = username;
         this.password = password;
         this.authorities = authorities;
@@ -31,6 +34,7 @@ public class AccountDetails implements UserDetails {
                 .map(role -> new SimpleGrantedAuthority(role.getRole().getName()))
                 .collect(Collectors.toList());
         return new AccountDetails(
+                account.getId(),
                 account.getUsername(),
                 account.getPassword(),
                 authorities);
@@ -44,6 +48,11 @@ public class AccountDetails implements UserDetails {
     public String getPassword() {
         return password;
     }
+
+    public Long getAccountId() {
+        return accountId;
+    }
+
 
     @Override
     public String getUsername() {

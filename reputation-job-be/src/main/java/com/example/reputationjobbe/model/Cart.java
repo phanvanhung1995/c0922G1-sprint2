@@ -9,6 +9,8 @@ public class Cart {
     private Long id ;
     @Column(nullable = false, columnDefinition = "int")
     private int quantity;
+    private boolean flagDelete;
+
     @ManyToOne
     @JoinColumn(name = "cv_id",referencedColumnName = "id")
     private CV cv;
@@ -46,5 +48,13 @@ public class Cart {
 
     public void setOrder(Orders order) {
         this.order = order;
+    }
+
+    public boolean isPaid() {
+        return flagDelete;
+    }
+
+    public void setPaid(boolean paid) {
+        flagDelete = paid;
     }
 }

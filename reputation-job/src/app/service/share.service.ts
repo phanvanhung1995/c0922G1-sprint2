@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ export class ShareService {
   }
 
   private subject = new Subject<any>();
+  itemCount: BehaviorSubject<any> = new BehaviorSubject<number>(0);
 
   sendClickEvent() {
     this.subject.next();
@@ -17,5 +18,14 @@ export class ShareService {
 
   getClickEvent(): Observable<any> {
     return this.subject.asObservable();
+  }
+
+
+  getCount(): Observable<any> {
+    return this.itemCount.asObservable();
+  }
+
+  setCount(count: number): void {
+    this.itemCount.next(count);
   }
 }

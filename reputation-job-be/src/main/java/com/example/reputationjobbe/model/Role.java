@@ -1,5 +1,6 @@
 package com.example.reputationjobbe.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ public class Role {
     private String name;
 
     @OneToMany(mappedBy = "role")
-    @JsonIgnore
+    @JsonBackReference
     private Set<AccountRole> accountRoleSet;
 
     public Long getId() {
